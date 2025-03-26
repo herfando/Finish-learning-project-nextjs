@@ -1,0 +1,35 @@
+<img
+  src="/hero.png"
+  alt="Screenshots of the dashboard project showing desktop version"
+/>
+
+import { useState, useEffect } from 'react'
+ 
+export default function App() {
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+ 
+  return <h1>{isClient ? 'This is never prerendered' : 'Prerendered'}</h1>
+}
+
+import dynamic from 'next/dynamic'
+ 
+const NoSSR = dynamic(() => import('../components/no-ssr'), { ssr: false })
+ 
+export default function Page() {
+  return (
+    <div>
+      <NoSSR />
+    </div>
+  )
+}
+
+<time datetime="2016-10-25" suppressHydrationWarning />
+
+<meta
+  name="format-detection"
+  content="telephone=no, date=no, email=no, address=no"
+/>
